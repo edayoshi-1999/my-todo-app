@@ -13,7 +13,7 @@ export function SearchButton() {
 export function AddButton() {
   return (
         <button>
-            <span>タスクの追加</span>
+            タスクの追加
         </button>
   );
 }

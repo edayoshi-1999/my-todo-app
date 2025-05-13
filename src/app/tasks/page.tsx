@@ -9,22 +9,31 @@ import SideBar from "@/ui/tasks/side-bar";
 
 
 export default function Page() {
-  return (
-    //一番上に、検索画面
-    //その下に、タスクの絞り込みフィルターと、追加ボタン
-    //その下に、タスクの一覧表示
-    //左に、サイドバー 
-    <div className="flex">
-      <SideBar />
-      <div className="flex flex-col w-full">
-        <Search />
-        <div className="flex justify-between items-center p-4">
+ return (
+    <div className="flex min-h-screen bg-gray-100">
+      {/* サイドバー */}
+      <aside className="w-1/4 bg-white shadow-md p-4">
+        <SideBar />
+      </aside>
+
+      {/* メインコンテンツ */}
+      <main className="flex flex-col w-3/4 p-6 space-y-6">
+        {/* 検索バー */}
+        <section className="bg-white shadow-md rounded-lg p-4">
+          <Search />
+        </section>
+
+        {/* フィルターと追加ボタン */}
+        <section className="flex justify-between items-center bg-white shadow-md rounded-lg p-4">
           <StatusFilter />
           <AddButton />
-        </div>
-        <TaskList />
-      </div>
-    </div>
+        </section>
 
+        {/* タスクリスト */}
+        <section className="bg-white shadow-md rounded-lg p-4 flex-1 overflow-y-auto">
+          <TaskList />
+        </section>
+      </main>
+    </div>
   );
 }
