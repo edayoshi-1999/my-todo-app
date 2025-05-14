@@ -15,25 +15,48 @@ datasource db {
 }
 
 model Todo {
-  id        Int      @id @default(autoincrement())
-  title     String
-  completed Boolean  @default(false)
-  createdAt DateTime @default(now())
+  id          Int       @id @default(autoincrement()) // ① id: 必須、自動生成
+  userId      Int       // ② ユーザーid: 必須
+  title       String    // ③ タイトル: 必須
+  description String?   // ④ 詳細: 任意
+  deadline    DateTime  // ⑤ 締め切り日:　必須
+  status      Status    @default(NOT_STARTED) // ⑥ ステータス: 未着手、進行中、完了。 初期値は未着手
+  updatedAt   DateTime  @updatedAt // ⑦ 更新日: 自動更新
+  createdAt   DateTime  @default(now()) // ⑧ 作成日: 自動生成
+
+  // ユーザーとのリレーション
+  user        User      @relation(fields: [userId], references: [id])
 }
 
-//実験用。https://www.prisma.io/docs/guides/nextjs#21-install-prisma-orm
+// ステータスの列挙型
+enum Status {
+  NOT_STARTED // 未着手
+  IN_PROGRESS // 進行中
+  COMPLETED   // 完了
+}
+
+// ユーザーモデル
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+  id    Int    @id @default(autoincrement())
+  name  String
+  password String
+  email String @unique
+  todos Todo[]
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  authorId  Int
-  author    User    @relation(fields: [authorId], references: [id])
-}
+// //実験用。https://www.prisma.io/docs/guides/nextjs#21-install-prisma-orm
+// model User {
+//   id    Int     @id @default(autoincrement())
+//   email String  @unique
+//   name  String?
+//   posts Post[]
+// }
+
+// model Post {
+//   id        Int     @id @default(autoincrement())
+//   title     String
+//   content   String?
+//   published Boolean @default(false)
+//   authorId  Int
+//   author    User    @relation(fields: [authorId], references: [id])
+// }

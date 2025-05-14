@@ -122,23 +122,20 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.TodoScalarFieldEnum = {
   id: 'id',
+  userId: 'userId',
   title: 'title',
-  completed: 'completed',
+  description: 'description',
+  deadline: 'deadline',
+  status: 'status',
+  updatedAt: 'updatedAt',
   createdAt: 'createdAt'
 };
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
-  email: 'email',
-  name: 'name'
-};
-
-exports.Prisma.PostScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  content: 'content',
-  published: 'published',
-  authorId: 'authorId'
+  name: 'name',
+  password: 'password',
+  email: 'email'
 };
 
 exports.Prisma.SortOrder = {
@@ -155,12 +152,15 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.Status = exports.$Enums.Status = {
+  NOT_STARTED: 'NOT_STARTED',
+  IN_PROGRESS: 'IN_PROGRESS',
+  COMPLETED: 'COMPLETED'
+};
 
 exports.Prisma.ModelName = {
   Todo: 'Todo',
-  User: 'User',
-  Post: 'Post'
+  User: 'User'
 };
 
 /**
