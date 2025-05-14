@@ -23,8 +23,8 @@ export default function NewPost() {
       },
     });
 
-    revalidatePath("/posts");
-    redirect("/posts");
+    revalidatePath("/testdb/posts");
+    redirect("/testdb/posts");
   }
 
   return (
