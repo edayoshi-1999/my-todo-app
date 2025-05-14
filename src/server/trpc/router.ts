@@ -1,6 +1,7 @@
 // src/server/trpc/router.ts
 import { router } from './trpc'
 import { helloRouter } from './routers/hello'
+import { tasksRouter } from './routers/tasks';
 
 //helloRouter を登録した tRPC のルーター
 //クライアントからのリクエストは、このルーターを通じて適切なプロシージャにルーティングされます。
@@ -8,6 +9,7 @@ import { helloRouter } from './routers/hello'
 // 例えば、ユーザー関連のルーターや商品関連のルーターなどを作成し、ここでまとめて登録することができます
 export const appRouter = router({
   hello: helloRouter,
+  tasks: tasksRouter,
 })
 
 export type AppRouter = typeof appRouter
