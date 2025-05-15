@@ -1,5 +1,6 @@
 // src/app/layout.tsx
 import { Providers } from '@/lib/providers'
+import './globals.css' // グローバルCSSをインポート。これをlayout.tsxでインポートすることで、全てのページに適用される
 
 
 // childrenを受け取るRootLayoutコンポーネント
