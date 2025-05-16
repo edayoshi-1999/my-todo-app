@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 
 //タスクの検索ボタン
 export function SearchButton() {
@@ -9,12 +11,16 @@ export function SearchButton() {
 }
 
 
+
 // タスクの追加ボタン
 export function AddButton() {
   return (
-    <button type="button" className="px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600">
+    <Link
+      href="/task/new" // タスクの追加画面へのリンク
+      className="px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600 inline-block text-center"
+    >
       タスクの追加
-    </button>
+    </Link>
   );
 }
 
