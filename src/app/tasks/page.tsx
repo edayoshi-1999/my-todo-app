@@ -3,6 +3,7 @@
 // 'use client'を指定
 'use client';
 
+import React, { useState } from 'react'; // useStateをインポート
 
 // ui/tasksのファイル
 import TaskList from "@/ui/tasks/task-list"; 
@@ -13,14 +14,19 @@ import SideBar from "@/ui/tasks/side-bar";
 
 // libのファイル
 import { trpc } from '@/lib/trpc';
-import type { Todo } from '@/lib/definitions'; // 型専用
+import type { TaskStatus, Todo } from '@/lib/definitions'; // 型専用
 import { format } from "node:path"; // 修正: node:プロトコルを使用
 
 
 
 export default function Page() {
   
-  const { data: tasks, isLoading } = trpc.tasks.getAll.useQuery();
+  const [selectedStatus, setSelectedStatus] = useState<TaskStatus | undefined>(undefined);// ステータスの状態を管理するためのuseStateフックを使用
+
+  const { data: tasks, isLoading } = trpc.tasks.getAll.useQuery({
+    status: selectedStatus, //選択されたステータスをAPIに渡す
+  });
+
 
   //取得したデータを整形
   // tasksはTodo[] | undefinedの型を持つので、undefinedの場合は空の配列を返す
@@ -58,7 +64,7 @@ const tags = Array.from(
 
           {/* フィルターと追加ボタン */}
           <section className="flex justify-between items-center bg-white shadow-md rounded-lg p-4">
-            <StatusFilter />
+            <StatusFilter onChange={setSelectedStatus} />
             <AddButton />
           </section>
 
