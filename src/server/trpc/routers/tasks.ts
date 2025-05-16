@@ -1,6 +1,6 @@
 import { router, publicProcedure } from '../trpc';
 import prisma from '@/lib/prisma';
-import { Todo } from '@/lib/definitions';
+import type { Todo } from '@/lib/definitions';
 
 // tasksRouter は tRPC のルーターで、
 // クライアントからのリクエスト(タスク一覧取得)を処理するためのプロシージャを定義しています。

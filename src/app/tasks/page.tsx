@@ -33,12 +33,20 @@ export default function Page() {
   createdAt: new Date(task.createdAt), 
 }));
 
+// 取得したタスクの中から、タグを取得
+// タグの重複を排除するために、Setを使用してユニークなタグを取得
+// Setは重複を許さないコレクションで、Array.fromを使って配列に変換
+const tags = Array.from(
+  new Set(formattedTasks.map((task) => task.tag || 'タグなし'))
+);
+
+
 
   return (
       <div className="flex min-h-screen bg-gray-100">
         {/* サイドバー */}
         <aside className="w-1/4 bg-white shadow-md p-4">
-          <SideBar />
+          <SideBar tags={tags}/>
         </aside>
 
         {/* メインコンテンツ */}
