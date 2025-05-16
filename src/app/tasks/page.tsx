@@ -21,8 +21,10 @@ import { format } from "node:path"; // 修正: node:プロトコルを使用
 
 export default function Page() {
   
-  const [selectedStatus, setSelectedStatus] = useState<TaskStatus | undefined>(undefined);// ステータスの状態を管理するためのuseStateフックを使用
+  //// ステータスの状態を管理するためのuseStateフックを使用
+  const [selectedStatus, setSelectedStatus] = useState<TaskStatus | undefined>(undefined);
 
+  // tRPCを使用してAPIからタスクを取得
   const { data: tasks, isLoading } = trpc.tasks.getAll.useQuery({
     status: selectedStatus, //選択されたステータスをAPIに渡す
   });

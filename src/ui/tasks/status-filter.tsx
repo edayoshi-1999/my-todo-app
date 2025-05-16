@@ -17,7 +17,9 @@ export default function StatusFilter({
         id="filter"
         className="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         onChange={(e) => {
-          const value = e.target.value;
+          const value = e.target.value; // ここで選択された値を取得
+
+            // valueが空文字列の場合はundefinedを渡す
           onChange(
             value === ""
               ? undefined
@@ -25,6 +27,8 @@ export default function StatusFilter({
           );
         }}
       >
+        
+        {/* <option value="NOT_STARTED">未着手</option> の場合、選択肢が「未着手」のときに value は "NOT_STARTED" になります。 */}
         <option value="">すべて</option>
         <option value="NOT_STARTED">未着手</option>
         <option value="IN_PROGRESS">着手中</option>
