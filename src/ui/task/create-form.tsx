@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import type { TaskStatus } from '@/lib/definitions';
 
-interface EditFormProps {
+interface CreateFormProps {
   onSubmit: (data: { title: string; description: string; status: TaskStatus; deadline: string; tag: string; userId: number }) => void;
 }
 
-export const EditForm: React.FC<EditFormProps> = ({ onSubmit }) => {
+export const CreateForm: React.FC<CreateFormProps> = ({ onSubmit }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [status, setStatus] = useState<TaskStatus>('NOT_STARTED');

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import {EditForm} from '@/ui/task/edit-form';
+import {CreateForm} from '@/ui/task/create-form';
 import { trpc } from '@/lib/trpc';
 import type {TaskStatus} from '@/lib/definitions';
 
@@ -30,7 +30,7 @@ const TaskPage: React.FC = () => {
 
       // タスク作成成功のメッセージを表示
       alert('タスクが作成されました！');
-      
+
     } catch (error) {
       console.error('タスク作成エラー:', error);
       alert('タスクの作成に失敗しました。');
@@ -41,7 +41,7 @@ const TaskPage: React.FC = () => {
   return (
     <div>
       <h1>タスク作成</h1>
-      <EditForm onSubmit={handleFormSubmit} />
+      <CreateForm onSubmit={handleFormSubmit} />
     </div>
   );
 };
