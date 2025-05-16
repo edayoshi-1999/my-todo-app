@@ -25,11 +25,14 @@ export function AddButton() {
 }
 
 // 編集ボタン
-export function EditButton() {
+export function EditButton({ taskId }: { taskId: number }) {
   return (
-    <button type="button" className="px-4 py-2 text-white bg-yellow-500 rounded hover:bg-yellow-600">
-      <span>編集</span>
-    </button>
+    <Link
+      href={`/task/${taskId}/edit`}
+      className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+    >
+      編集
+    </Link>
   );
 }
 

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import type { Todo } from '@/lib/definitions';
+import { EditButton } from './button';
 
 export default function TaskList({ tasks }: { tasks: Todo[] }) {
 
@@ -19,17 +20,26 @@ export default function TaskList({ tasks }: { tasks: Todo[] }) {
       <ul className="space-y-4">
         {tasks.map((task) => (
           <li key={task.id} className="p-4 bg-white shadow rounded">
-            <h3 className="text-lg font-semibold">{task.title}</h3>
-            <p>{task.description || 'No description'}</p>
-            <p>締め切り: {new Date(task.deadline).toLocaleDateString()}</p>
-            <p>ステータス: {statusMap[task.status]}</p>
-            <p className="text-sm text-gray-700">
-              {/* タグが存在しない場合は 'タグなし' を表示。 */}
-              タグ: {task.tag || 'タグなし'} 
-            </p>
-            <p className="text-sm text-gray-500">
-              作成日: {new Date(task.createdAt).toLocaleString()}
-            </p>
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-lg font-semibold">{task.title}</h3>
+                <p>{task.description || 'No description'}</p>
+                <p>締め切り: {new Date(task.deadline).toLocaleDateString()}</p>
+                <p>ステータス: {statusMap[task.status]}</p>
+                <p className="text-sm text-gray-700">              {/* タグが存在しない場合は 'タグなし' を表示。 */}
+
+                  タグ: {task.tag || 'タグなし'}
+                </p>
+                <p className="text-sm text-gray-500">
+                  作成日: {new Date(task.createdAt).toLocaleString()}
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-2 ml-4">
+                <EditButton taskId={task.id}/>
+                {/* <DeleteButton taskId={task.id} /> */}
+              </div>
+            </div>
           </li>
         ))}
       </ul>
