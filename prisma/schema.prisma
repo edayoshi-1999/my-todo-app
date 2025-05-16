@@ -23,6 +23,7 @@ model Todo {
   status      Status    @default(NOT_STARTED) // ⑥ ステータス: 未着手、進行中、完了。 初期値は未着手
   updatedAt   DateTime  @updatedAt // ⑦ 更新日: 自動更新
   createdAt   DateTime  @default(now()) // ⑧ 作成日: 自動生成
+  tag         String?   // タグを単一の文字列として追加 (任意)
 
   // ユーザーとのリレーション
   user        User      @relation(fields: [userId], references: [id])

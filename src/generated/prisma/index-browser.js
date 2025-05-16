@@ -128,7 +128,8 @@ exports.Prisma.TodoScalarFieldEnum = {
   deadline: 'deadline',
   status: 'status',
   updatedAt: 'updatedAt',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  tag: 'tag'
 };
 
 exports.Prisma.UserScalarFieldEnum = {

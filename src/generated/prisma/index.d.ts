@@ -1039,6 +1039,7 @@ export namespace Prisma {
     status: $Enums.Status | null
     updatedAt: Date | null
     createdAt: Date | null
+    tag: string | null
   }
 
   export type TodoMaxAggregateOutputType = {
@@ -1050,6 +1051,7 @@ export namespace Prisma {
     status: $Enums.Status | null
     updatedAt: Date | null
     createdAt: Date | null
+    tag: string | null
   }
 
   export type TodoCountAggregateOutputType = {
@@ -1061,6 +1063,7 @@ export namespace Prisma {
     status: number
     updatedAt: number
     createdAt: number
+    tag: number
     _all: number
   }
 
@@ -1084,6 +1087,7 @@ export namespace Prisma {
     status?: true
     updatedAt?: true
     createdAt?: true
+    tag?: true
   }
 
   export type TodoMaxAggregateInputType = {
@@ -1095,6 +1099,7 @@ export namespace Prisma {
     status?: true
     updatedAt?: true
     createdAt?: true
+    tag?: true
   }
 
   export type TodoCountAggregateInputType = {
@@ -1106,6 +1111,7 @@ export namespace Prisma {
     status?: true
     updatedAt?: true
     createdAt?: true
+    tag?: true
     _all?: true
   }
 
@@ -1204,6 +1210,7 @@ export namespace Prisma {
     status: $Enums.Status
     updatedAt: Date
     createdAt: Date
+    tag: string | null
     _count: TodoCountAggregateOutputType | null
     _avg: TodoAvgAggregateOutputType | null
     _sum: TodoSumAggregateOutputType | null
@@ -1234,6 +1241,7 @@ export namespace Prisma {
     status?: boolean
     updatedAt?: boolean
     createdAt?: boolean
+    tag?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["todo"]>
 
@@ -1246,6 +1254,7 @@ export namespace Prisma {
     status?: boolean
     updatedAt?: boolean
     createdAt?: boolean
+    tag?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["todo"]>
 
@@ -1258,6 +1267,7 @@ export namespace Prisma {
     status?: boolean
     updatedAt?: boolean
     createdAt?: boolean
+    tag?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["todo"]>
 
@@ -1270,9 +1280,10 @@ export namespace Prisma {
     status?: boolean
     updatedAt?: boolean
     createdAt?: boolean
+    tag?: boolean
   }
 
-  export type TodoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "title" | "description" | "deadline" | "status" | "updatedAt" | "createdAt", ExtArgs["result"]["todo"]>
+  export type TodoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "title" | "description" | "deadline" | "status" | "updatedAt" | "createdAt" | "tag", ExtArgs["result"]["todo"]>
   export type TodoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -1297,6 +1308,7 @@ export namespace Prisma {
       status: $Enums.Status
       updatedAt: Date
       createdAt: Date
+      tag: string | null
     }, ExtArgs["result"]["todo"]>
     composites: {}
   }
@@ -1729,6 +1741,7 @@ export namespace Prisma {
     readonly status: FieldRef<"Todo", 'Status'>
     readonly updatedAt: FieldRef<"Todo", 'DateTime'>
     readonly createdAt: FieldRef<"Todo", 'DateTime'>
+    readonly tag: FieldRef<"Todo", 'String'>
   }
     
 
@@ -3256,7 +3269,8 @@ export namespace Prisma {
     deadline: 'deadline',
     status: 'status',
     updatedAt: 'updatedAt',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    tag: 'tag'
   };
 
   export type TodoScalarFieldEnum = (typeof TodoScalarFieldEnum)[keyof typeof TodoScalarFieldEnum]
@@ -3386,6 +3400,7 @@ export namespace Prisma {
     status?: EnumStatusFilter<"Todo"> | $Enums.Status
     updatedAt?: DateTimeFilter<"Todo"> | Date | string
     createdAt?: DateTimeFilter<"Todo"> | Date | string
+    tag?: StringNullableFilter<"Todo"> | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
@@ -3398,6 +3413,7 @@ export namespace Prisma {
     status?: SortOrder
     updatedAt?: SortOrder
     createdAt?: SortOrder
+    tag?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
   }
 
@@ -3413,6 +3429,7 @@ export namespace Prisma {
     status?: EnumStatusFilter<"Todo"> | $Enums.Status
     updatedAt?: DateTimeFilter<"Todo"> | Date | string
     createdAt?: DateTimeFilter<"Todo"> | Date | string
+    tag?: StringNullableFilter<"Todo"> | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
@@ -3425,6 +3442,7 @@ export namespace Prisma {
     status?: SortOrder
     updatedAt?: SortOrder
     createdAt?: SortOrder
+    tag?: SortOrderInput | SortOrder
     _count?: TodoCountOrderByAggregateInput
     _avg?: TodoAvgOrderByAggregateInput
     _max?: TodoMaxOrderByAggregateInput
@@ -3444,6 +3462,7 @@ export namespace Prisma {
     status?: EnumStatusWithAggregatesFilter<"Todo"> | $Enums.Status
     updatedAt?: DateTimeWithAggregatesFilter<"Todo"> | Date | string
     createdAt?: DateTimeWithAggregatesFilter<"Todo"> | Date | string
+    tag?: StringNullableWithAggregatesFilter<"Todo"> | string | null
   }
 
   export type UserWhereInput = {
@@ -3505,6 +3524,7 @@ export namespace Prisma {
     status?: $Enums.Status
     updatedAt?: Date | string
     createdAt?: Date | string
+    tag?: string | null
     user: UserCreateNestedOneWithoutTodosInput
   }
 
@@ -3517,6 +3537,7 @@ export namespace Prisma {
     status?: $Enums.Status
     updatedAt?: Date | string
     createdAt?: Date | string
+    tag?: string | null
   }
 
   export type TodoUpdateInput = {
@@ -3526,6 +3547,7 @@ export namespace Prisma {
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tag?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutTodosNestedInput
   }
 
@@ -3538,6 +3560,7 @@ export namespace Prisma {
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tag?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TodoCreateManyInput = {
@@ -3549,6 +3572,7 @@ export namespace Prisma {
     status?: $Enums.Status
     updatedAt?: Date | string
     createdAt?: Date | string
+    tag?: string | null
   }
 
   export type TodoUpdateManyMutationInput = {
@@ -3558,6 +3582,7 @@ export namespace Prisma {
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tag?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TodoUncheckedUpdateManyInput = {
@@ -3569,6 +3594,7 @@ export namespace Prisma {
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tag?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserCreateInput = {
@@ -3699,6 +3725,7 @@ export namespace Prisma {
     status?: SortOrder
     updatedAt?: SortOrder
     createdAt?: SortOrder
+    tag?: SortOrder
   }
 
   export type TodoAvgOrderByAggregateInput = {
@@ -3715,6 +3742,7 @@ export namespace Prisma {
     status?: SortOrder
     updatedAt?: SortOrder
     createdAt?: SortOrder
+    tag?: SortOrder
   }
 
   export type TodoMinOrderByAggregateInput = {
@@ -3726,6 +3754,7 @@ export namespace Prisma {
     status?: SortOrder
     updatedAt?: SortOrder
     createdAt?: SortOrder
+    tag?: SortOrder
   }
 
   export type TodoSumOrderByAggregateInput = {
@@ -4130,6 +4159,7 @@ export namespace Prisma {
     status?: $Enums.Status
     updatedAt?: Date | string
     createdAt?: Date | string
+    tag?: string | null
   }
 
   export type TodoUncheckedCreateWithoutUserInput = {
@@ -4140,6 +4170,7 @@ export namespace Prisma {
     status?: $Enums.Status
     updatedAt?: Date | string
     createdAt?: Date | string
+    tag?: string | null
   }
 
   export type TodoCreateOrConnectWithoutUserInput = {
@@ -4180,6 +4211,7 @@ export namespace Prisma {
     status?: EnumStatusFilter<"Todo"> | $Enums.Status
     updatedAt?: DateTimeFilter<"Todo"> | Date | string
     createdAt?: DateTimeFilter<"Todo"> | Date | string
+    tag?: StringNullableFilter<"Todo"> | string | null
   }
 
   export type TodoCreateManyUserInput = {
@@ -4190,6 +4222,7 @@ export namespace Prisma {
     status?: $Enums.Status
     updatedAt?: Date | string
     createdAt?: Date | string
+    tag?: string | null
   }
 
   export type TodoUpdateWithoutUserInput = {
@@ -4199,6 +4232,7 @@ export namespace Prisma {
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tag?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TodoUncheckedUpdateWithoutUserInput = {
@@ -4209,6 +4243,7 @@ export namespace Prisma {
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tag?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TodoUncheckedUpdateManyWithoutUserInput = {
@@ -4219,6 +4254,7 @@ export namespace Prisma {
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tag?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

@@ -11,5 +11,6 @@ export type Todo = {
   status: $Enums.Status; // Prisma の Status型を直接使用
   updatedAt: Date;
   createdAt: Date;
+  tag: string | null;
 };
 
