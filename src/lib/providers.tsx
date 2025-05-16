@@ -6,6 +6,9 @@ import { useState } from 'react'
 import { httpBatchLink } from '@trpc/client';
 
 export function Providers({ children }: { children: React.ReactNode }) {
+
+  console.log('Providers is rendering'); // デバッグ用ログ
+  
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
     trpc.createClient({
