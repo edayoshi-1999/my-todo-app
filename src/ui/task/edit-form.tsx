@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { TaskStatus } from '@/lib/definitions';
 
 interface EditFormProps {
-  onSubmit: (data: { title: string; description: string; status: TaskStatus; deadline: string; tag: string , userId: number}) => void;
+  onSubmit: (data: { title: string; description: string; status: TaskStatus; deadline: string; tag: string; userId: number }) => void;
 }
 
 export const EditForm: React.FC<EditFormProps> = ({ onSubmit }) => {
@@ -27,48 +27,37 @@ export const EditForm: React.FC<EditFormProps> = ({ onSubmit }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      style={{
-        maxWidth: 400,
-        margin: '2rem auto',
-        padding: 24,
-        border: '1px solid #ddd',
-        borderRadius: 8,
-        background: '#fafbfc',
-        boxShadow: '0 2px 8px #eee',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 16,
-      }}
+      className="max-w-md mx-auto my-8 p-6 border border-gray-300 rounded-lg bg-gray-50 shadow flex flex-col gap-4"
     >
       {/* タイトル */}
-      <label htmlFor="title" style={{ fontWeight: 'bold' }}>タイトル</label>
+      <label htmlFor="title" className="font-bold">タイトル</label>
       <input
         id="title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="タイトル"
-        style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+        className="p-2 rounded border border-gray-300"
         required
       />
 
       {/* 説明 */}
-      <label htmlFor="description" style={{ fontWeight: 'bold' }}>説明</label>
+      <label htmlFor="description" className="font-bold">説明</label>
       <textarea
         id="description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         placeholder="説明"
         rows={3}
-        style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+        className="p-2 rounded border border-gray-300"
       />
 
       {/* ステータス */}
-      <label htmlFor="status" style={{ fontWeight: 'bold' }}>ステータス</label>
+      <label htmlFor="status" className="font-bold">ステータス</label>
       <select
         id="status"
         value={status}
         onChange={(e) => setStatus(e.target.value as TaskStatus)}
-        style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+        className="p-2 rounded border border-gray-300"
       >
         <option value="NOT_STARTED">未着手</option>
         <option value="IN_PROGRESS">進行中</option>
@@ -76,38 +65,30 @@ export const EditForm: React.FC<EditFormProps> = ({ onSubmit }) => {
       </select>
 
       {/* 締切日 */}
-      <label htmlFor="deadline" style={{ fontWeight: 'bold' }}>締切日</label>
+      <label htmlFor="deadline" className="font-bold">締切日</label>
       <input
         id="deadline"
         type="date"
         value={deadline}
         onChange={(e) => setDeadline(e.target.value)}
-        style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+        className="p-2 rounded border border-gray-300"
         required
       />
 
       {/* タグ */}
-      <label htmlFor="tag" style={{ fontWeight: 'bold' }}>タグ</label>
+      <label htmlFor="tag" className="font-bold">タグ</label>
       <input
         id="tag"
         value={tag}
         onChange={(e) => setTag(e.target.value)}
         placeholder="タグ"
-        style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+        className="p-2 rounded border border-gray-300"
       />
 
       {/* 送信ボタン */}
       <button
         type="submit"
-        style={{
-          padding: 10,
-          borderRadius: 4,
-          border: 'none',
-          background: '#1976d2',
-          color: '#fff',
-          fontWeight: 'bold',
-          cursor: 'pointer',
-        }}
+        className="p-2 rounded bg-blue-600 text-white font-bold hover:bg-blue-700 transition"
       >
         送信
       </button>
