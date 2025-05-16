@@ -1,10 +1,13 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import {EditForm} from '@/ui/task/edit-form';
 import { trpc } from '@/lib/trpc';
 import type {TaskStatus} from '@/lib/definitions';
 
 const TaskPage: React.FC = () => {
+
+  const router = useRouter();
   const createTask = trpc.tasks.create.useMutation();
 
   // タスク作成のための関数
@@ -18,8 +21,16 @@ const TaskPage: React.FC = () => {
     userId: number;
   }) => {
     try {
+
+      // タスクを作成するためのAPIを呼び出す
       await createTask.mutateAsync(data);
+
+      // 追加後に /tasks へ遷移
+      router.push('/tasks');
+
+      // タスク作成成功のメッセージを表示
       alert('タスクが作成されました！');
+      
     } catch (error) {
       console.error('タスク作成エラー:', error);
       alert('タスクの作成に失敗しました。');
