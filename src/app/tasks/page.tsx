@@ -13,8 +13,9 @@ import SideBar from "@/ui/tasks/side-bar";
 
 // libのファイル
 import { trpc } from '@/lib/trpc';
-import { Todo } from '@/lib/definitions';
-import { format } from "path";
+import type { Todo } from '@/lib/definitions'; // 型専用
+import { format } from "node:path"; // 修正: node:プロトコルを使用
+
 
 
 export default function Page() {

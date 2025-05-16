@@ -1,5 +1,6 @@
 //型定義のファイル
-import { $Enums } from '@/generated/prisma';
+import type { $Enums } from '@/generated/prisma';
+
 
 export type Todo = {
   id: number;
