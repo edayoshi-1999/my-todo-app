@@ -1,7 +1,7 @@
 //タスクを一覧表示する
 
 import React from 'react';
-import { Todo } from '@/lib/definitions';
+import type { Todo } from '@/lib/definitions';
 
 export default function TaskList({ tasks }: { tasks: Todo[] }) {
   return (
@@ -14,6 +14,10 @@ export default function TaskList({ tasks }: { tasks: Todo[] }) {
             <p>{task.description || 'No description'}</p>
             <p>締め切り: {new Date(task.deadline).toLocaleDateString()}</p>
             <p>ステータス: {task.status}</p>
+            <p className="text-sm text-gray-700">
+              {/* タグが存在しない場合は 'タグなし' を表示。 */}
+              タグ: {task.tag || 'タグなし'} 
+            </p>
             <p className="text-sm text-gray-500">
               作成日: {new Date(task.createdAt).toLocaleString()}
             </p>
