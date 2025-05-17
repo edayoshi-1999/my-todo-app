@@ -8,8 +8,9 @@ import type { TaskStatus } from '@/lib/definitions';
 // これにより、入力データのバリデーションに使用され、ステータスがこれらの値のいずれかであることを保証します。
 const TaskStatusEnum = z.enum(["NOT_STARTED", "IN_PROGRESS", "COMPLETED"]);
 
+// タスクの更新処理を定義
 export const update = publicProcedure
-    .input(
+    .input( // タスクの更新に必要なデータ(引数)を定義
       z.object({
         id: z.string(),
         title: z.string().min(1),

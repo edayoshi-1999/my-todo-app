@@ -33,7 +33,12 @@ export default function EditTaskPage() {
         ...data,
         title: task.title, // タイトルを変更不可にするため、最後に指定して上書きする
      });
+
+    // タスク更新後に /tasks へ遷移
     router.push('/tasks');
+
+    // タスク更新成功のメッセージを表示
+    alert('タスクが更新されました！');
   };
 
   return (

@@ -24,9 +24,10 @@ interface EditFormProps {
 export const EditForm: React.FC<EditFormProps> = ({ 
         initialValues,
         onSubmit,
-        editableFields = ['description', 'status', 'deadline', 'tag'],
+        editableFields = ['description', 'status', 'deadline', 'tag'], // 編集可能なフィールドのデフォルト値
     }) => {
 
+  // 初期値を設定(渡された値を優先し、なければ空文字列やデフォルト値を使用)
   const [title, setTitle] = useState(initialValues?.title ?? '');
   const [description, setDescription] = useState(initialValues?.description ?? '');
   const [status, setStatus] = useState<TaskStatus>(initialValues?.status ?? 'NOT_STARTED');
@@ -34,6 +35,8 @@ export const EditForm: React.FC<EditFormProps> = ({
   const [tag, setTag] = useState(initialValues?.tag ?? '');
   const [userId] = useState(initialValues?.userId ?? 1);
 
+  // フォームの送信処理
+  // onSubmit関数を呼び出し、フォームのデータを渡す
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit({
@@ -47,14 +50,14 @@ export const EditForm: React.FC<EditFormProps> = ({
   };
 
 
-  
+
 return (
     <form onSubmit={handleSubmit} className="max-w-md mx-auto my-8 p-6 border border-gray-300 rounded-lg bg-gray-50 shadow flex flex-col gap-4">
       {/* タイトルは編集不可 */}
       <label htmlFor="title" className="font-bold">タイトル</label>
       <input id="title" value={title} className="p-2 rounded border border-gray-300 bg-gray-100" disabled />
 
-      {editableFields.includes('description') && (
+      {editableFields.includes('description') && ( // 説明は編集可能なフィールドとして表示
         <>
           <label htmlFor="description" className="font-bold">説明</label>
           <textarea id="description" value={description} onChange={e => setDescription(e.target.value)} className="p-2 rounded border border-gray-300" />
